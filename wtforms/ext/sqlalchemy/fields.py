@@ -170,7 +170,7 @@ class QuerySelectMultipleField(QuerySelectField):
 
     def iter_choices(self):
         for pk, obj in self._get_object_list():
-            yield (pk, self.get_label(obj), obj in self.data)
+            yield (pk, self.get_label(obj), obj in (self.data or []))
 
     def process_formdata(self, valuelist):
         self._formdata = set(valuelist)
